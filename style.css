@@ -1,0 +1,120 @@
+#web {
+  width: 700px;
+  border: 1px solid grey;
+  margin: 0 auto;
+  text-align: center;
+}
+header {
+  margin: 0;
+  background-color: lightgreen;
+  padding: 2rem;
+}
+h1 {
+  margin-top: 0;
+}
+#search {
+  display: block;
+  margin: 0 auto;
+  padding: 0.3rem;
+  width: 30%;
+}
+#hide {
+  margin-top: 1.5rem;
+}
+#main {
+  margin-top: 1rem;
+}
+#add {
+  width: 300px;
+  display: flex;
+  text-align: center;
+  margin: 0.3rem auto;
+  border: 1px solid grey;
+}
+[type="text"] {
+  outline: 0;
+}
+#add [type="text"] {
+  padding: 0.3rem;
+  border: 0;
+  flex-grow: 2;
+}
+button {
+  cursor: pointer;
+}
+#add button {
+  border: 0;
+  outline: 0;
+  padding: 0.5rem 2rem;
+  background-color: rgba(0, 128, 0, 0.658);
+  color: white;
+}
+#add button:hover {
+  background-color: rgba(0, 128, 0, 0.958);
+}
+#list-container {
+  text-align: left;
+  padding: 1.5rem;
+}
+#list {
+  list-style: none;
+  padding-left: 1rem;
+}
+#list li {
+  display: flex;
+  align-items: center;
+  padding: 0.1rem 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-left: 4px solid grey;
+  transition: 0.4s all;
+}
+#list button {
+  background-color: red;
+  height: 100%;
+  padding: 0.5rem;
+  color: white;
+  border: 0;
+  border-radius: 3px;
+}
+#list li:hover {
+  border-left: 4px solid red;
+}
+#list button:hover {
+  background-color: black;
+}
+.close {
+  display: none;
+}
+#tab-wrapper {
+  text-align: left;
+  margin-bottom: 10px;
+}
+#tab-wrapper li {
+  display: inline-block;
+  padding: 0.4rem 1.5rem;
+  background-color: lightgrey;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+#tab-wrapper li:hover {
+  background: red;
+  color: white;
+}
+.panel {
+  display: none;
+  margin: 0 1.5rem;
+  border: 1px solid lightgrey;
+  padding: 0.5rem 1.5rem;
+  border-radius: 3px;
+}
+.panel.active {
+  display: block;
+}
+#tab-wrapper .selected {
+  background-color: rgb(139, 139, 139);
+}
+#answer {
+  display: none;
+}

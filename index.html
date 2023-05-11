@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+        <section id="web">
+            <header>
+                <h1>Shopaholic</h1>
+                <p>My shopping list</p>
+                <input type="text" placeholder="Search items..." id="search">
+                <label for="hide">Hide list</label><input type="checkbox" id="hide">
+            </header>
+            <section id="main">
+                <div id="add"> <input id='add-input' type="text" placeholder="What do you want to buy?"><button
+                        type="submit">Add</button></div>
+                <div id="list-container">
+                    <h2>Items to buy</h2>
+                    <ul id="list">
+                        <li>
+                            <p>Milk</p><button>delete</button>
+                        </li>
+                        <li>
+                            <p>Sugar</p><button>delete</button>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <div id="tab-wrapper">
+                <ul>
+                    <li data-clicked="#joke" class="active">Food Joke</li>
+                    <li data-clicked="#facts">Did you know</li>
+                </ul>
+                <div id="joke" class="panel">
+                    <p>How do you call a fake noodle?</p>
+                    <button id="showAnswer">Answer</button>
+                    <p id="answer">Answer</p>
+                </div>
+                <div id="facts" class="panel">
+                    <p>This is what I learn about food this week</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis possimus iste autem.
+                        Maiores nihil, ratione porro maxime culpa reiciendis assumenda itaque, laborum beatae animi
+                        voluptatum nulla, corrupti tempore quisquam veniam.</p>
+                </div>
+            </div>
+        </section>
+        <script>
+            document.querySelector('#showAnswer').addEventListener('click', (e) => {
+                document.querySelector('#answer').style.display = 'block'
+                document.querySelector('#answer').textContent = 'An Impasta'
+                e.target.style.display = 'none'
+            })
+            selected = null;
+            document.querySelector('#tab-wrapper ul').addEventListener('click', (e) => {
+
+                if (e.target.tagName == 'LI') {
+                    if (selected != null) {
+                        if (selected == e.target) {
+                            selected.classList.toggle('selected')
+                            document.querySelector(selected.dataset.clicked).classList.toggle('active')
+                            return
+                        }
+                        else {
+                            selected.classList.remove('selected');
+                            document.querySelector(selected.dataset.clicked).classList.remove('active')
+                        }
+                    }
+
+                    selected = e.target
+                    selected.classList.add('selected')
+                    document.querySelector(selected.dataset.clicked).classList.add('active')
+                }
+
+            }
+
+            )
+
+
+
+            let box = document.querySelector('#hide')
+            box.addEventListener('change', () => {
+                if (box.checked) {
+
+                    document.querySelector('#list-container').classList.add('close')
+                }
+                else {
+                    document.querySelector('#list-container').classList.remove('close')
+                }
+            })
+            let add = document.querySelector('#add button')
+            add.addEventListener('click', addItem)
+            function addItem(e) {
+                value = e.target.previousElementSibling.value;
+                item = document.createElement('li')
+                document.querySelector('#list').appendChild(item)
+                para = document.createElement('p')
+                para.textContent = value
+                document.querySelector('#list').lastElementChild.appendChild(para)
+                btn = document.createElement('button')
+                btn.textContent = 'delete'
+                item.appendChild(btn);
+
+                e.target.previousElementSibling.value = null
+
+            }
+            let list = document.querySelector('#list')
+            list.addEventListener('click', remove)
+            function remove(e) {
+                if (e.target.tagName == 'BUTTON') {
+                    e.target.parentNode.remove()
+                }
+            }
+            document.querySelector('#search').addEventListener('keyup', find)
+            function find(e) {
+                search = e.target.value.toLowerCase();
+                items = document.querySelectorAll('#list li')
+                arr = Array.from(items)
+                arr.forEach((item) => {
+                    if (item.firstElementChild.textContent.toLowerCase().indexOf(search) != -1) {
+                        item.style.display = 'flex'
+                    } else {
+                        item.style.display = 'none'
+                    }
+                })
+
+            }
+        </script>
+    </main>
+
+
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>
